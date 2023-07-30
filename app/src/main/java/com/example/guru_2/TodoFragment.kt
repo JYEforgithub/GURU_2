@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.guru_2.databinding.FragmentTodoBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -15,23 +16,36 @@ class TodoFragment : Fragment() {
 
     private lateinit var taskViewModel: TaskViewModel
     private lateinit var binding: FragmentTodoBinding
+    private lateinit var taskAdapter:TaskItemAdapter
+
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootview=inflater.inflate(R.layout.fragment_todo,container,false)
-        val fabOpenDialog=rootview.rootView.findViewById<FloatingActionButton>(R.id.newTaskButton)
+
+        val rootView = inflater.inflate(R.layout.fragment_todo, container, false)
+
+        val fabOpenDialog =rootView.rootView.findViewById<FloatingActionButton>(R.id.newTaskButton)
         taskViewModel=ViewModelProvider(this).get(TaskViewModel::class.java)
         fabOpenDialog.setOnClickListener{
             val dialogFragment = NewTaskSheet(null)
             dialogFragment.show(childFragmentManager, NewTaskSheet.TAG)
-        }
-        val binding = FragmentTodoBinding.inflate(inflater, container, false)
 
-        return rootview
+            taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+            val recyclerView = rootView.findViewById<RecyclerView>(R.id.todoListRecyclerView)
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+            // Create and set the adapter for the RecyclerView
+            taskAdapter = TaskItemAdapter(taskViewModel.getAllTasks(), this)
+            recyclerView.adapter = taskAdapter
+        }
+
+        return rootView
+
     }
+
 
     fun editTaskItem(taskItem: TaskItem)
     {
@@ -43,5 +57,10 @@ class TodoFragment : Fragment() {
         taskViewModel.setCompleted(taskItem)
     }
 
-}
+
+
+    }
+
+
+
 

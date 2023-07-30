@@ -40,4 +40,9 @@ class TaskViewModel: ViewModel()
             task.completedDate = LocalDate.now()
         taskItems.postValue(list)
     }
+
+    fun getAllTasks(): List<TaskItem> {
+        return taskItems.value?: emptyList()
+    }
 }
+

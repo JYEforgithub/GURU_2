@@ -7,7 +7,7 @@ import com.example.guru_2.databinding.TaskItemCellBinding
 
 
 class TaskItemAdapter(
-    private val taskItems: List<TaskItem>,
+    val taskItems: List<TaskItem>,
     private val clickListener: TodoFragment
 ): RecyclerView.Adapter<TaskItemViewHolder>()
 {

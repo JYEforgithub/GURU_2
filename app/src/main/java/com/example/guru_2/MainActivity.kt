@@ -4,7 +4,12 @@ package com.example.guru_2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.example.guru_2.databinding.ActivityMainBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationBarView
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
@@ -91,4 +96,6 @@ class MainActivity : AppCompatActivity() {
         val range = (0..quotes.size)
         quotePager.setCurrentItem(range.random(), false)
     }
+
+
 }

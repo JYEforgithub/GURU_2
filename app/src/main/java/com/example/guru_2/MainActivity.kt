@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private val quotePager: ViewPager2 by lazy {
         findViewById(R.id.viewPager)
     }
+    lateinit var taskViewModel:TaskViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -10,10 +10,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.guru_2.databinding.FragmentNewTaskSheetBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.sql.Time
 import java.time.LocalTime
 
-class NewTaskSheet(var taskItem: TaskItem?) : DialogFragment()
+class NewTaskSheet(var taskItem: TaskItem?) : BottomSheetDialogFragment()
 {
     private lateinit var binding: FragmentNewTaskSheetBinding
     private lateinit var taskViewModel: TaskViewModel

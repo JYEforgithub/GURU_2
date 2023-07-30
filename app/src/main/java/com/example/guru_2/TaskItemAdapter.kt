@@ -8,7 +8,7 @@ import com.example.guru_2.databinding.TaskItemCellBinding
 
 class TaskItemAdapter(
     private val taskItems: List<TaskItem>,
-    private val clickListener: TaskItemClickListener
+    private val clickListener: TodoFragment
 ): RecyclerView.Adapter<TaskItemViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskItemViewHolder {
